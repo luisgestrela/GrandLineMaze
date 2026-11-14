@@ -1,0 +1,5 @@
+Coloque aqui o arquivo da musica de fundo com o nome exato:
+
+    we-are.mp3
+
+(No jogo, ele toca em loop. Sem esse arquivo, o jogo usa uma trilha chiptune reserva.)

@@ -1,0 +1,78 @@
+/* ===== Tela inicial animada ===== */
+#title{position:fixed;inset:0;z-index:10;overflow:hidden;font-family:'Press Start 2P','Courier New',monospace;
+  background:linear-gradient(#040916 0%,#0a1f4a 34%,#1f55a6 52%,#0a1d3f 100%);transition:opacity .45s,transform .45s;user-select:none}
+#title.leaving{opacity:0;transform:scale(1.06);pointer-events:none}
+#title *{box-sizing:border-box}
+#title .stars{position:absolute;inset:0 0 44% 0}
+#title .stars i{position:absolute;width:3px;height:3px;background:#fff;border-radius:1px;animation:twinkle 2.6s infinite ease-in-out}
+@keyframes twinkle{0%,100%{opacity:.15}50%{opacity:1}}
+#title .moon{position:absolute;top:5%;right:7%;width:clamp(48px,9vw,120px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#fffbe6,#e8eefc 55%,#b3c3ec);box-shadow:0 0 60px 18px rgba(200,220,255,.35);animation:moonglow 5s ease-in-out infinite}
+@keyframes moonglow{50%{box-shadow:0 0 95px 30px rgba(200,220,255,.55)}}
+#title .cloud{position:absolute;height:clamp(14px,3vw,34px);width:clamp(90px,16vw,220px);background:#1a3b78;border-radius:40px;opacity:.55;animation:drift 60s linear infinite}
+#title .cloud.c1{top:16%;left:-20%}#title .cloud.c2{top:30%;left:-30%;animation-duration:85s;animation-delay:-30s;opacity:.35}
+@keyframes drift{to{transform:translateX(150vw)}}
+#title .sea{position:absolute;left:0;right:0;top:52%;height:22%;background:linear-gradient(#2b78cf,#0b2a5c)}
+#title .wave{position:absolute;left:0;right:0;height:40px;top:-22px;background-repeat:repeat-x;background-size:200px 40px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='40' viewBox='0 0 200 40'%3E%3Cpath d='M0 22 Q25 2 50 22 T100 22 T150 22 T200 22 V40 H0Z' fill='%232b78cf'/%3E%3C/svg%3E");animation:waveMove 7s linear infinite}
+#title .wave.w2{top:-12px;opacity:.7;animation-duration:11s;animation-direction:reverse;filter:brightness(1.35)}
+@keyframes waveMove{to{background-position-x:-200px}}
+#title .ship{position:absolute;right:14%;bottom:47%;width:clamp(60px,10vw,150px);animation:bob 4.5s ease-in-out infinite;transform-origin:50% 90%}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(5px) rotate(2deg)}}
+#title .floor{position:absolute;left:0;right:0;bottom:0;height:46%;overflow:hidden;perspective:520px}
+#title .plane{position:absolute;left:-60%;width:220%;bottom:-35%;height:230%;transform-origin:50% 100%;transform:rotateX(64deg);
+  background-color:#0f2a55;background-image:linear-gradient(rgba(70,190,255,.6) 3px,transparent 3px),linear-gradient(90deg,rgba(70,190,255,.6) 3px,transparent 3px),linear-gradient(rgba(255,255,255,.05) 50%,transparent 50%);
+  background-size:100px 100px,100px 100px,100px 200px;animation:floorMove .8s linear infinite}
+@keyframes floorMove{to{background-position:0 100px,0 100px,0 200px}}
+#title .fog{position:absolute;left:0;right:0;bottom:44%;height:12%;background:linear-gradient(transparent,rgba(10,29,63,.9))}
+#title .torch{position:absolute;bottom:26%;width:clamp(18px,3.2vw,40px);height:clamp(54px,10vw,120px);z-index:1}
+#title .torch.l{left:3%}#title .torch.r{right:3%}
+#title .torch b{position:absolute;inset:35% 0 0 0;background:linear-gradient(90deg,#4b5c80,#2c3a5c);border:2px solid #16213a;border-radius:3px}
+#title .flame{position:absolute;left:50%;top:-6%;width:78%;height:46%;transform:translateX(-50%);border-radius:50% 50% 40% 40%;
+  background:radial-gradient(ellipse at 50% 72%,#fff3a0,#ffb300 40%,#ff5a00 72%,transparent 74%);box-shadow:0 0 34px 12px rgba(255,150,0,.5);animation:flicker .22s infinite alternate}
+@keyframes flicker{from{transform:translateX(-50%) scale(1,1)}to{transform:translateX(-50%) scale(.88,1.14)}}
+#title .a{position:absolute;pointer-events:none;z-index:2;filter:drop-shadow(0 6px 8px rgba(0,0,0,.45))}
+#title .ghost{height:clamp(62px,12vw,150px);animation:gfloat 3s ease-in-out infinite alternate}
+#title .g1{left:7%;bottom:34%}#title .g2{right:8%;bottom:34%;animation-delay:-1s}
+#title .g3{left:24%;bottom:19%;animation-delay:-2s}#title .g4{right:24%;bottom:19%;animation-delay:-.5s}
+@keyframes gfloat{from{transform:translateY(0) rotate(-3deg)}to{transform:translateY(-16px) rotate(3deg)}}
+#title .runner{left:50%;bottom:4%;height:clamp(100px,min(25vh,34vw),270px);animation:run .28s ease-in-out infinite}
+@keyframes run{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-14px)}}
+#title .coin{height:clamp(22px,4.2vw,52px);animation:coin 2.4s linear infinite}
+@keyframes coin{0%{transform:translateY(0) rotateY(0)}50%{transform:translateY(-12px) rotateY(180deg)}100%{transform:translateY(0) rotateY(360deg)}}
+#title .c1{left:16%;bottom:12%}#title .c2{left:35%;bottom:8%;animation-delay:-.5s}#title .c3{right:33%;bottom:10%;animation-delay:-1s}
+#title .c4{right:15%;bottom:14%;animation-delay:-1.5s}#title .c5{left:43%;bottom:30%;animation-delay:-.8s}
+#title .fruit{right:3%;bottom:3%;height:clamp(40px,8vw,100px);animation:fruit 1.8s ease-in-out infinite}
+@keyframes fruit{0%,100%{transform:scale(1);filter:drop-shadow(0 0 8px #9d4edd)}50%{transform:scale(1.1);filter:drop-shadow(0 0 22px #c77dff)}}
+
+#title .ui{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;padding-top:2.5vh;gap:1.6vh}
+#title .logo{margin:0;text-align:center;line-height:1.15;font-size:clamp(24px,6vw,78px);
+  filter:drop-shadow(3px 0 0 #1a0a2e) drop-shadow(-3px 0 0 #1a0a2e) drop-shadow(0 3px 0 #1a0a2e) drop-shadow(0 -3px 0 #1a0a2e) drop-shadow(0 7px 0 #8a1c0e);
+  animation:logo 3.2s ease-in-out infinite}
+#title .logo span{display:block;color:transparent;background:linear-gradient(#fff6b0 10%,#ffc400 50%,#ff7a00 95%);-webkit-background-clip:text;background-clip:text}
+@keyframes logo{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-6px) scale(1.02)}}
+#title .banner{padding:.9em 2em;font-size:clamp(8px,1.6vw,19px);color:#3a2410;letter-spacing:1px;background:linear-gradient(#f4e2b4,#d6bb82);
+  border:3px solid #8a6a38;border-radius:6px;box-shadow:0 5px 0 #5a3d18,0 0 0 3px #f4e2b4 inset;animation:sway 4s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(-1deg)}50%{transform:rotate(1deg)}}
+#title .menu{display:flex;flex-direction:column;align-items:center;gap:1.6vh;margin-top:1.2vh}
+#title .btn{font-family:inherit;font-size:clamp(11px,2vw,22px);padding:1.1em 2em;min-width:min(76vw,360px);cursor:pointer;color:#ffe066;
+  background:linear-gradient(#b5733a,#7a4720);border:4px solid #3b210c;border-radius:10px;box-shadow:0 6px 0 #2a1608,inset 0 0 0 2px #d79a58;
+  text-shadow:2px 2px 0 #2a1608;transition:transform .12s,filter .12s,box-shadow .12s}
+#title .btn:hover,#title .btn:focus-visible{transform:translateY(-3px) scale(1.04);filter:brightness(1.18);outline:none}
+#title .btn:active{transform:translateY(3px);box-shadow:0 2px 0 #2a1608,inset 0 0 0 2px #d79a58}
+#title .btn.main{font-size:clamp(14px,2.6vw,30px);padding:1.1em 2.2em;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 6px 0 #2a1608,inset 0 0 0 2px #d79a58,0 0 0 rgba(255,210,63,0)}50%{box-shadow:0 6px 0 #2a1608,inset 0 0 0 2px #d79a58,0 0 28px rgba(255,210,63,.75)}}
+#title .row{display:flex;gap:1.4vw;flex-wrap:wrap;justify-content:center;align-items:center}
+#title .row .btn{min-width:0;font-size:clamp(9px,1.4vw,15px);padding:1em 1.3em}
+#title .volbox{display:flex;align-items:center;gap:8px;font-size:clamp(9px,1.4vw,14px);color:#ffe066;background:rgba(5,11,31,.6);padding:.8em 1em;border-radius:10px;border:2px solid #3b210c}
+#title .volbox input{width:clamp(70px,12vw,140px);accent-color:#ffd23f}
+#title .hint{position:absolute;bottom:1.6vh;left:0;right:0;text-align:center;font-size:clamp(8px,1.3vw,13px);color:#ffe9a0;z-index:4;animation:blink 1.2s steps(2) infinite;text-shadow:2px 2px 0 #000}
+@keyframes blink{50%{opacity:.25}}
+#help{position:absolute;inset:0;z-index:6;display:none;align-items:center;justify-content:center;background:rgba(5,11,31,.82)}
+#help.on{display:flex}
+#help .paper{width:min(560px,92vw);padding:24px;color:#3a2410;background:linear-gradient(#f4e2b4,#d6bb82);border:4px solid #8a6a38;border-radius:10px;box-shadow:0 8px 0 #5a3d18;font-size:clamp(9px,1.5vw,13px);line-height:2}
+#help h2{margin:0 0 10px;text-align:center;font-size:clamp(14px,2.2vw,20px)}
+#help ul{padding-left:18px;margin:0 0 14px}
+#help .btn{display:block;margin:0 auto;min-width:0;font-size:12px;padding:.9em 1.6em}
+@media (max-height:560px){#title .runner{height:90px}#title .ghost{height:50px}}
+@media (prefers-reduced-motion:reduce){#title *{animation:none!important}}

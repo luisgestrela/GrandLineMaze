@@ -1,0 +1,13 @@
+{
+  "name": "grand-line-maze",
+  "version": "1.0.0",
+  "description": "Pac-Man de One Piece: Grand Line Maze",
+  "private": true,
+  "scripts": {
+    "dev": "http-server . -p 5500 -c-1 -o",
+    "start": "npm run dev"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

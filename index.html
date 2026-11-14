@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grand Line Maze</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/title.css">
+</head>
+<body>
+<div id="title">
+  <div class="stars"></div><div class="moon"></div><div class="cloud c1"></div><div class="cloud c2"></div>
+  <svg class="ship" viewBox="0 0 120 100" aria-hidden="true"><path d="M10 70 L110 70 L95 92 L25 92Z" fill="#0b1226"/><rect x="58" y="8" width="3" height="64" fill="#0b1226"/><path d="M62 14 Q104 32 62 64Z" fill="#101a38"/><path d="M58 20 Q18 34 58 58Z" fill="#101a38"/><circle cx="82" cy="38" r="4" fill="#cfd8ff"/><path d="M61 8 l18 5 -18 5z" fill="#c1121f"/></svg>
+  <div class="sea"><div class="wave"></div><div class="wave w2"></div></div>
+  <div class="floor"><div class="plane"></div></div><div class="fog"></div>
+  <div class="torch l"><i class="flame"></i><b></b></div><div class="torch r"><i class="flame"></i><b></b></div>
+  <img class="a ghost g1" src="assets/sprites/akainu.png" alt=""><img class="a ghost g2" src="assets/sprites/bigmom.png" alt="">
+  <img class="a ghost g3" src="assets/sprites/croc.png" alt=""><img class="a ghost g4" src="assets/sprites/barba.png" alt="">
+  <img class="a coin c1" src="assets/sprites/coin.png" alt=""><img class="a coin c2" src="assets/sprites/coin.png" alt=""><img class="a coin c3" src="assets/sprites/coin.png" alt="">
+  <img class="a coin c4" src="assets/sprites/coin.png" alt=""><img class="a coin c5" src="assets/sprites/coin.png" alt="">
+  <img class="a fruit" src="assets/sprites/fruit.png" alt=""><img id="runner" class="a runner" src="assets/sprites/luffy_side_a.png" alt="">
+  <div class="ui">
+    <h1 class="logo"><span>GRAND LINE</span><span>MAZE</span></h1>
+    <div class="banner">CAÇA-TESOUROS NO LABIRINTO</div>
+    <div class="menu">
+      <button id="btnStart" class="btn main">☠ INICIAR JOGO</button>
+      <div class="row">
+        <button id="btnHelp" class="btn">? COMO JOGAR</button>
+        <button id="tmute" class="btn mutebtn" data-long="1">🔊 SOM: ON</button>
+        <label class="volbox">VOL <input type="range" id="tvol" class="volctl" min="0" max="100" value="60" aria-label="Volume"></label>
+      </div>
+    </div>
+  </div>
+  <div class="hint">PRESSIONE ENTER PARA COMEÇAR</div>
+  <div id="help"><div class="paper"><h2>COMO JOGAR</h2><ul>
+    <li>Mova o Luffy com as setas ou WASD (no celular, deslize na tela).</li>
+    <li>Colete todas as moedas (Beris) do labirinto para passar de nível.</li>
+    <li>Pegue a Akuma no Mi roxa para assustar os piratas e comê-los.</li>
+    <li>Fuja de Akainu, Big Mom, Crocodile e Barba Negra.</li>
+    <li>Tecla M liga e desliga o som.</li></ul><button id="btnClose" class="btn">FECHAR</button></div></div>
+</div>
+<div id="login"><div class="box"><h2>⚓ GRAND LINE LOGIN</h2>
+<div class="tabs"><button id="tIn" class="on">Entrar</button><button id="tUp">Criar conta</button></div>
+<input id="u" placeholder="Usuário" autocomplete="username"><input id="pw" type="password" placeholder="Senha" autocomplete="current-password">
+<div id="msg"></div><button id="go" class="main">Entrar</button><button id="gg">Entrar com Google</button>
+<button id="guest" class="link">Jogar como convidado</button></div></div>
+<h1>GRAND LINE MAZE</h1>
+<div id="hud"><span>BERIS: <b id="sc">0</b></span><span>VIDAS: <b id="lv">3</b></span><span>NÍVEL: <b id="lvl">1</b></span><span>RECORDE: <b id="hi">0</b></span><button id="mute" class="mutebtn" title="Som (tecla M)">🔊</button><input type="range" id="vol" class="volctl" min="0" max="100" value="60" title="Volume"><span>JOGADOR: <b id="who">-</b> <a id="out">sair</a></span></div>
+<canvas id="c" width="672" height="480"></canvas>
+<p>Setas / WASD ou deslize na tela • ENTER ou toque para começar • Pegue a Akuma no Mi roxa para assustar os piratas!</p>
+<script src="js/audio.js"></script>
+<script src="js/game.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
