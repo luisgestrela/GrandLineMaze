@@ -1,6 +1,6 @@
 /* ---------- login ---------- */
 // Configure aqui sua API real (POST {apiUrl}/login e {apiUrl}/register com {usuario,senha} -> {ok,nome}) e/ou o Client ID do Google.
-const AUTH={apiUrl:'',googleClientId:''};
+const AUTH={apiUrl:'',googleClientId:'1032585005771-78bsr23d2ae9jmqmrqjlne49b39ip4pq.apps.googleusercontent.com'};
 let user=null,mode='in';
 const L=id=>document.getElementById(id);
 const store={get:k=>{try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
@@ -24,12 +24,22 @@ async function submit(){
 L('tIn').onclick=()=>setMode('in');L('tUp').onclick=()=>setMode('up');L('go').onclick=()=>{SND.unlock();submit()};
 [L('u'),L('pw')].forEach(i=>i.addEventListener('keydown',e=>{if(e.key==='Enter')submit()}));
 L('guest').onclick=()=>setUser('Convidado','guest');
+function initGoogle(){
+  google.accounts.id.initialize({client_id:AUTH.googleClientId,callback:r=>{
+    const b=r.credential.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');
+    const pl=JSON.parse(decodeURIComponent(escape(atob(b))));
+    setUser(pl.name||pl.email,'google');
+  }});
+  L('gg').style.display='none';
+  google.accounts.id.renderButton(L('gbtn'),{theme:'filled_blue',size:'large',text:'signin_with',locale:'pt-BR',width:320});
+}
 L('gg').onclick=()=>{
-  if(!AUTH.googleClientId)return msg('Login Google: defina AUTH.googleClientId no código.');
+  if(!AUTH.googleClientId)return msg('Login Google: defina AUTH.googleClientId no js/auth.js.');
+  if(window.google&&google.accounts)return initGoogle();
   const s=document.createElement('script');s.src='https://accounts.google.com/gsi/client';
-  s.onload=()=>{google.accounts.id.initialize({client_id:AUTH.googleClientId,callback:r=>{
-    const pl=JSON.parse(atob(r.credential.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')));setUser(pl.name||pl.email,'google')}});google.accounts.id.prompt()};
+  s.onload=initGoogle;s.onerror=()=>msg('Não consegui carregar o Google (sem internet?).');
   document.head.appendChild(s);
 };
+if(AUTH.googleClientId)L('gg').onclick(); // com o ID configurado, o botão oficial já aparece
 L('out').onclick=()=>{store.set('glm:session',null);user=null;state='menu';resetPos();L('who').textContent='-';L('login').style.display='flex'};
 const ses=store.get('glm:session');if(ses&&ses.name&&ses.src!=='guest')L('u').value=ses.name;
