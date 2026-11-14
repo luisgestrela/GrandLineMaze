@@ -3,6 +3,7 @@
  * - Reserva local: quando a API não existe (ex.: npm run dev), mostra o ranking deste navegador.
  * - Convidados não entram no ranking. Tecla R abre/fecha; o jogo pausa enquanto o painel está aberto. */
 const HOLD={on:false};
+let RANK_ERR='';
 const RANK=(()=>{
   const API='/api/ranking',$r=id=>document.getElementById(id);
   const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -13,7 +14,11 @@ const RANK=(()=>{
     const o=store.get('glm:rank')||{},cur=o[user.name];
     if(!cur||score>cur.score){o[user.name]={score,level};store.set('glm:rank',o)}
     if(user.src==='google'&&user.token){
-      try{await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({credential:user.token,score})})}catch(e){}
+      try{
+        const r=await fetch(API,{method:'POST',keepalive:true,headers:{'Content-Type':'application/json'},body:JSON.stringify({credential:user.token,score})});
+        if(r.ok)RANK_ERR='';
+        else{const d=await r.json().catch(()=>({}));RANK_ERR='HTTP '+r.status+' '+(d.error||'')+' '+(d.detail||'');console.warn('[ranking] não salvou online:',RANK_ERR)}
+      }catch(e){RANK_ERR='sem resposta de /api/ranking';console.warn('[ranking]',e)}
     }
   }
   async function fetchRemote(){
@@ -27,6 +32,7 @@ const RANK=(()=>{
     const remote=await fetchRemote(),list=remote||localBoard();
     $r('rankSrc').textContent=remote?'Ranking online (jogadores com Google)':'Ranking deste navegador (online indisponível)';
     $r('rankNote').textContent=!user?'Faça login para aparecer no ranking.':user.src==='guest'?'Convidados não entram no ranking.':(remote&&user.src!=='google')?'Entre com Google para aparecer no ranking online.':'';
+    if(RANK_ERR)$r('rankNote').textContent='⚠ Não consegui salvar online: '+RANK_ERR;
     const medal=['🥇','🥈','🥉'];
     $r('rankList').innerHTML=list.length?list.map((p,i)=>'<li class="'+(user&&p.name===user.name?'me':'')+'"><b>'+(medal[i]||(i+1)+'º')+'</b><span>'+esc(p.name)+'</span><em>'+p.score+'</em></li>').join(''):'<li class="dim">Ninguém no ranking ainda. Seja o primeiro!</li>';
   }
