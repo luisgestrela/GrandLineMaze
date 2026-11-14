@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body{margin:0;background:#050b1f;color:#ffd75e;font-family:'Courier New',monospace;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh}
 h1{margin:8px;font-size:32px;letter-spacing:3px;text-shadow:3px 3px #c0392b}
 #hud{display:flex;gap:22px;font-weight:bold;margin-bottom:6px;flex-wrap:wrap;justify-content:center}
@@ -30,3 +31,81 @@ p{font-size:12px;color:#9fc3ff;margin:6px}
 #rankList li em{font-style:normal;color:#ffd23f;font-weight:bold}
 #rankList li.me{border-color:#ffd23f;background:#13427f}
 #rankList li.dim{justify-content:center;color:#9fc3ff;border-style:dashed}
+=======
+/* ===== Tela inicial: pôr do sol na Grand Line + cartaz de procurado ===== */
+#title{position:fixed;inset:0;z-index:10;overflow:hidden;font-family:'Press Start 2P','Courier New',monospace;
+  background:linear-gradient(#1b1040 0%,#6e2a6a 28%,#ff7b3a 50%,#ffc14d 51%,#0e3a6e 51.2%,#061a3a 100%);transition:opacity .45s,transform .45s;user-select:none}
+#title.leaving{opacity:0;transform:scale(1.06);pointer-events:none}
+#title *{box-sizing:border-box}
+#title .stars{position:absolute;inset:0 0 55% 0}
+#title .stars i{position:absolute;width:3px;height:3px;background:#fff;border-radius:1px;animation:twinkle 2.6s infinite ease-in-out}
+@keyframes twinkle{0%,100%{opacity:.1}50%{opacity:.9}}
+#title .sun{position:absolute;left:50%;top:51%;width:min(60vmin,420px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle,#fff6c0 0 38%,#ffc14d 58%,rgba(255,123,58,0) 72%);animation:sun 6s ease-in-out infinite}
+@keyframes sun{50%{transform:translate(-50%,-50%) scale(1.07)}}
+#title .cloud{position:absolute;height:clamp(12px,2.6vw,28px);width:clamp(90px,16vw,220px);background:#a24577;border-radius:40px;opacity:.6;animation:drift 70s linear infinite}
+#title .cloud.c1{top:14%;left:-20%}#title .cloud.c2{top:30%;left:-30%;animation-duration:95s;animation-delay:-40s;opacity:.4}
+@keyframes drift{to{transform:translateX(150vw)}}
+#title .sea{position:absolute;left:0;right:0;top:51%;bottom:0;background:linear-gradient(rgba(255,160,70,.45),#0e3a6e 18%,#061a3a)}
+#title .wave{position:absolute;left:0;right:0;height:40px;top:-2px;background-repeat:repeat-x;background-size:200px 40px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='40' viewBox='0 0 200 40'%3E%3Cpath d='M0 22 Q25 2 50 22 T100 22 T150 22 T200 22 V40 H0Z' fill='%230e3a6e'/%3E%3C/svg%3E");animation:waveMove 7s linear infinite}
+#title .wave.w2{top:6px;opacity:.6;animation-duration:11s;animation-direction:reverse;filter:brightness(1.5)}
+@keyframes waveMove{to{background-position-x:-200px}}
+#title .ship{position:absolute;right:3%;top:51%;width:clamp(150px,28vw,360px);transform:translateY(-91%);animation:bob 4.5s ease-in-out infinite;transform-origin:50% 90%;filter:drop-shadow(0 6px 10px rgba(0,0,0,.35))}
+@keyframes bob{0%,100%{transform:translateY(-91%) rotate(-1.5deg)}50%{transform:translateY(-88%) rotate(1.5deg)}}
+#title .a{position:absolute;pointer-events:none;z-index:2;filter:drop-shadow(0 6px 8px rgba(0,0,0,.45))}
+#title .ghost{height:clamp(46px,10vw,120px);animation:gfloat 3s ease-in-out infinite alternate}
+#title .g1{left:5%;bottom:22%}#title .g2{right:5%;bottom:22%;animation-delay:-1s}
+#title .g3{left:16%;bottom:6%;animation-delay:-2s}#title .g4{right:16%;bottom:6%;animation-delay:-.5s}
+@keyframes gfloat{from{transform:translateY(0) rotate(-3deg)}to{transform:translateY(-14px) rotate(3deg)}}
+#title .coin{height:clamp(22px,4vw,48px);animation:coin 2.4s linear infinite}
+@keyframes coin{0%{transform:translateY(0) rotateY(0)}50%{transform:translateY(-12px) rotateY(180deg)}100%{transform:translateY(0) rotateY(360deg)}}
+#title .c1{left:30%;bottom:9%}#title .c2{right:29%;bottom:11%;animation-delay:-1s}#title .c3{left:41%;bottom:3%;animation-delay:-1.6s}
+#title .fruit{right:3%;bottom:3%;height:clamp(36px,7vw,90px);animation:fruit 1.8s ease-in-out infinite}
+@keyframes fruit{0%,100%{transform:scale(1);filter:drop-shadow(0 0 8px #9d4edd)}50%{transform:scale(1.1);filter:drop-shadow(0 0 22px #c77dff)}}
+#title .ui{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5vh 0 5vh;gap:1.6vh}
+#title .logo{margin:0;text-align:center;line-height:1.05;font-family:'Alfa Slab One','Rye',serif;font-weight:400;font-size:clamp(26px,min(8vw,9vh),80px);letter-spacing:2px;transform:skewX(-5deg);
+  filter:drop-shadow(2px 0 0 #2a0f05) drop-shadow(-2px 0 0 #2a0f05) drop-shadow(0 2px 0 #2a0f05) drop-shadow(0 -2px 0 #2a0f05) drop-shadow(0 6px 0 #7a1d0c)}
+#title .logo span{display:block;color:transparent;background:linear-gradient(#fff3a8 10%,#ffc400 55%,#ff7a00 95%);-webkit-background-clip:text;background-clip:text}
+#title .poster{position:relative;width:min(300px,68vw);padding:clamp(8px,1.6vh,16px) 14px;text-align:center;color:#4a2c10;font-family:'Rye',serif;transform:rotate(-2deg);
+  background:radial-gradient(ellipse at center,#f3e2b0,#dcbf86);border:4px solid #6b4520;box-shadow:inset 0 0 0 3px #f3e2b0,0 10px 0 rgba(20,8,2,.45),0 22px 40px rgba(0,0,0,.5);animation:sway 5s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(1deg)}}
+#title .poster::before,#title .poster::after{content:"";position:absolute;top:6px;width:9px;height:9px;border-radius:50%;background:#3a2410;box-shadow:inset 1px 1px 0 #8a6a38}
+#title .poster::before{left:8px}#title .poster::after{right:8px}
+#title .poster h2{margin:0;font-weight:400;font-size:clamp(20px,min(5.6vh,7.4vw),44px);letter-spacing:1px;white-space:nowrap}
+#title .photo{margin:1vh 0;height:clamp(76px,18vh,170px);border:3px solid #4a2c10;background:radial-gradient(circle at 50% 85%,#ffe9a8,#e3b867);display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+#title .portrait{height:100%;animation:run .5s ease-in-out infinite}
+@keyframes run{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+#title .stamp{position:absolute;right:-14px;top:-16px;z-index:2;width:clamp(26px,5vh,40px);border-radius:4px;transform:rotate(8deg);box-shadow:0 2px 0 rgba(0,0,0,.3)}
+#title .flag{position:absolute;top:0;z-index:2;width:clamp(44px,8vw,100px);aspect-ratio:3/5;background:#111;padding:8px 4px;clip-path:polygon(0 0,100% 0,100% 100%,50% 88%,0 100%);transform-origin:50% 0;animation:sway 4s ease-in-out infinite}
+#title .flag svg{width:100%}#title .f1{left:6%}#title .f2{left:calc(6% + clamp(44px,8vw,100px) + 12px);animation-delay:-2s}
+#title .pname{font-size:clamp(14px,2.8vh,22px)}
+#title .reward{margin-top:.3em;font-size:clamp(15px,3.3vh,26px);color:#9c1c0c}
+#title .menu{display:flex;flex-direction:column;align-items:center;gap:1.4vh}
+#title .btn{font-family:inherit;font-size:clamp(11px,2vw,22px);padding:1.1em 2em;min-width:min(76vw,360px);cursor:pointer;color:#ffe066;
+  background:linear-gradient(#b5733a,#7a4720);border:4px solid #3b210c;border-radius:10px;box-shadow:0 6px 0 #2a1608,inset 0 0 0 2px #d79a58;
+  text-shadow:2px 2px 0 #2a1608;transition:transform .12s,filter .12s,box-shadow .12s}
+#title .btn:hover,#title .btn:focus-visible{transform:translateY(-3px) scale(1.04);filter:brightness(1.18);outline:none}
+#title .btn:active{transform:translateY(3px);box-shadow:0 2px 0 #2a1608,inset 0 0 0 2px #d79a58}
+#title .btn.main{font-size:clamp(14px,2.6vw,30px);padding:1.1em 2.2em;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 6px 0 #2a1608,inset 0 0 0 2px #d79a58,0 0 0 rgba(255,210,63,0)}50%{box-shadow:0 6px 0 #2a1608,inset 0 0 0 2px #d79a58,0 0 28px rgba(255,210,63,.75)}}
+#title .row{display:flex;gap:1.4vw;flex-wrap:wrap;justify-content:center;align-items:center}
+#title .row .btn{min-width:0;font-size:clamp(9px,1.4vw,15px);padding:1em 1.3em}
+#title .volbox{display:flex;align-items:center;gap:8px;font-size:clamp(9px,1.4vw,14px);color:#ffe066;background:rgba(5,11,31,.6);padding:.8em 1em;border-radius:10px;border:2px solid #3b210c}
+#title .volbox input{width:clamp(70px,12vw,140px);accent-color:#ffd23f}
+#title .hint{position:absolute;bottom:1.6vh;left:0;right:0;text-align:center;font-size:clamp(8px,1.3vw,13px);color:#ffe9a0;z-index:4;animation:blink 1.2s steps(2) infinite;text-shadow:2px 2px 0 #000}
+@keyframes blink{50%{opacity:.25}}
+#help{position:absolute;inset:0;z-index:6;display:none;align-items:center;justify-content:center;background:rgba(5,11,31,.82)}
+#help.on{display:flex}
+#help .paper{width:min(560px,92vw);padding:24px;color:#3a2410;background:linear-gradient(#f4e2b4,#d6bb82);border:4px solid #8a6a38;border-radius:10px;box-shadow:0 8px 0 #5a3d18;font-size:clamp(9px,1.5vw,13px);line-height:2}
+#help h2{margin:0 0 10px;text-align:center;font-size:clamp(14px,2.2vw,20px)}
+#help ul{padding-left:18px;margin:0 0 14px}
+#help .btn{display:block;margin:0 auto;min-width:0;font-size:12px;padding:.9em 1.6em}
+@media (max-height:560px){#title .runner{height:90px}#title .ghost{height:50px}}
+@media (prefers-reduced-motion:reduce){#title *{animation:none!important}}
+
+#title img.poster{display:block;width:auto;height:min(46vh,430px,78vw);padding:0;border:0;background:none;box-shadow:none;filter:drop-shadow(0 12px 0 rgba(20,8,2,.4)) drop-shadow(0 22px 24px rgba(0,0,0,.5))}
+#title img.poster::before,#title img.poster::after{content:none}
+@media (max-width:600px){#title .ship{right:-9%;width:46vw}}
+#title img.flag{left:5%;width:clamp(72px,12vw,150px);height:auto;aspect-ratio:auto;padding:0;background:none;filter:drop-shadow(0 4px 6px rgba(0,0,0,.45))}
+>>>>>>> f9088f7bfbba12a6fc8e9b7262ea4347a94ee3e7
