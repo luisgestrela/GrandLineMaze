@@ -5,35 +5,39 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Grand Line Maze</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rye&family=Alfa+Slab+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/title.css">
 </head>
 <body>
 <div id="title">
-  <div class="stars"></div><div class="moon"></div><div class="cloud c1"></div><div class="cloud c2"></div>
-  <svg class="ship" viewBox="0 0 120 100" aria-hidden="true"><path d="M10 70 L110 70 L95 92 L25 92Z" fill="#0b1226"/><rect x="58" y="8" width="3" height="64" fill="#0b1226"/><path d="M62 14 Q104 32 62 64Z" fill="#101a38"/><path d="M58 20 Q18 34 58 58Z" fill="#101a38"/><circle cx="82" cy="38" r="4" fill="#cfd8ff"/><path d="M61 8 l18 5 -18 5z" fill="#c1121f"/></svg>
+  <div class="stars"></div><div class="sun"></div><div class="cloud c1"></div><div class="cloud c2"></div>
   <div class="sea"><div class="wave"></div><div class="wave w2"></div></div>
-  <div class="floor"><div class="plane"></div></div><div class="fog"></div>
-  <div class="torch l"><i class="flame"></i><b></b></div><div class="torch r"><i class="flame"></i><b></b></div>
+  <img class="ship" src="assets/sunny.png" alt="">
   <img class="a ghost g1" src="assets/sprites/akainu.png" alt=""><img class="a ghost g2" src="assets/sprites/bigmom.png" alt="">
   <img class="a ghost g3" src="assets/sprites/croc.png" alt=""><img class="a ghost g4" src="assets/sprites/barba.png" alt="">
   <img class="a coin c1" src="assets/sprites/coin.png" alt=""><img class="a coin c2" src="assets/sprites/coin.png" alt=""><img class="a coin c3" src="assets/sprites/coin.png" alt="">
-  <img class="a coin c4" src="assets/sprites/coin.png" alt=""><img class="a coin c5" src="assets/sprites/coin.png" alt="">
-  <img class="a fruit" src="assets/sprites/fruit.png" alt=""><img id="runner" class="a runner" src="assets/sprites/luffy_side_a.png" alt="">
+  <img class="a fruit" src="assets/sprites/fruit.png" alt="">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="jr" viewBox="0 0 100 100">
+<path d="M16 58L84 94M84 58L16 94" stroke="#fff" stroke-width="9" stroke-linecap="round"/>
+<circle cx="50" cy="52" r="22" fill="#fff"/><rect x="38" y="64" width="24" height="16" rx="4" fill="#fff"/>
+<circle cx="41" cy="52" r="6" fill="#111"/><circle cx="59" cy="52" r="6" fill="#111"/><path d="M50 59l-3 6h6z" fill="#111"/><path d="M44 70v8M50 70v8M56 70v8" stroke="#111" stroke-width="2"/>
+<ellipse cx="50" cy="31" rx="41" ry="9" fill="#e9c46a"/><path d="M27 30Q50 -2 73 30Z" fill="#e9c46a"/><path d="M28 27Q50 33 72 27V21Q50 27 28 21Z" fill="#d62828"/></symbol></defs></svg>
+
+  <img class="flag" src="assets/jolly.png" alt="Jolly Roger dos Chapéus de Palha">
   <div class="ui">
     <h1 class="logo"><span>GRAND LINE</span><span>MAZE</span></h1>
-    <div class="banner">CAÇA-TESOUROS NO LABIRINTO</div>
+    <img class="poster" src="assets/poster.png" alt="Cartaz de procurado do Luffy">
     <div class="menu">
-      <button id="btnStart" class="btn main">☠ INICIAR JOGO</button>
+      <button id="btnStart" class="btn main">Zarpar!</button>
       <div class="row">
-        <button id="btnHelp" class="btn">? COMO JOGAR</button>
+        <button id="btnHelp" class="btn">Como jogar</button>
         <button id="tmute" class="btn mutebtn" data-long="1">🔊 SOM: ON</button>
         <label class="volbox">VOL <input type="range" id="tvol" class="volctl" min="0" max="100" value="60" aria-label="Volume"></label>
       </div>
     </div>
   </div>
-  <div class="hint">PRESSIONE ENTER PARA COMEÇAR</div>
+  <div class="hint">Pressione ENTER para zarpar</div>
   <div id="help"><div class="paper"><h2>COMO JOGAR</h2><ul>
     <li>Mova o Luffy com as setas ou WASD (no celular, deslize na tela).</li>
     <li>Colete todas as moedas (Beris) do labirinto para passar de nível.</li>
