@@ -47,12 +47,14 @@
 <div id="msg"></div><button id="go" class="main">Entrar</button><button id="gg">Entrar com Google</button><div id="gbtn" style="display:flex;justify-content:center"></div>
 <button id="guest" class="link">Jogar como convidado</button></div></div>
 <h1>GRAND LINE MAZE</h1>
-<div id="hud"><span>BERIS: <b id="sc">0</b></span><span>VIDAS: <b id="lv">3</b></span><span>NÍVEL: <b id="lvl">1</b></span><span>RECORDE: <b id="hi">0</b></span><button id="mute" class="mutebtn" title="Som (tecla M)">🔊</button><input type="range" id="vol" class="volctl" min="0" max="100" value="60" title="Volume"><span>JOGADOR: <b id="who">-</b> <a id="out">sair</a></span></div>
+<div id="hud"><span>BERIS: <b id="sc">0</b></span><span>VIDAS: <b id="lv">3</b></span><span>NÍVEL: <b id="lvl">1</b></span><span>RECORDE: <b id="hi">0</b></span><button id="rankbtn" title="Ranking (tecla R)">🏆</button><button id="mute" class="mutebtn" title="Som (tecla M)">🔊</button><input type="range" id="vol" class="volctl" min="0" max="100" value="60" title="Volume"><span>JOGADOR: <b id="who">-</b> <a id="out">sair</a></span></div>
 <canvas id="c" width="672" height="480"></canvas>
 <p>Setas / WASD ou deslize na tela • ENTER ou toque para começar • Pegue a Akuma no Mi roxa para assustar os piratas!</p>
+<div id="rank"><div class="box"><h2>🏆 RANKING</h2><div id="rankSrc"></div><ol id="rankList"></ol><div id="rankNote"></div><button id="rankClose" class="main">Fechar</button></div></div>
 <script src="js/audio.js"></script>
 <script src="js/game.js"></script>
 <script src="js/auth.js"></script>
+<script src="js/ranking.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

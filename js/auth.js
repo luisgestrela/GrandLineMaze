@@ -6,7 +6,7 @@ const L=id=>document.getElementById(id);
 const store={get:k=>{try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 const msg=t=>{L('msg').textContent=t};
 async function hashPw(s){try{const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('glm:'+s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}catch(e){return btoa(unescape(encodeURIComponent('glm:'+s)))}}
-function setUser(name,src){user={name,src};store.set('glm:session',user);hi=+store.get('glm:hi:'+name)||0;L('login').style.display='none';L('who').textContent=name;state='menu';hud()}
+function setUser(name,src,token){user={name,src,token};store.set('glm:session',{name,src});hi=+store.get('glm:hi:'+name)||0;L('login').style.display='none';L('who').textContent=name;state='menu';hud()}
 function setMode(m){mode=m;L('tIn').className=m==='in'?'on':'';L('tUp').className=m==='up'?'on':'';L('go').textContent=m==='in'?'Entrar':'Criar conta';msg('')}
 async function submit(){
   const u=L('u').value.trim(),pw=L('pw').value;
@@ -28,7 +28,7 @@ function initGoogle(){
   google.accounts.id.initialize({client_id:AUTH.googleClientId,callback:r=>{
     const b=r.credential.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');
     const pl=JSON.parse(decodeURIComponent(escape(atob(b))));
-    setUser(pl.name||pl.email,'google');
+    setUser(pl.name||pl.email,'google',r.credential);
   }});
   L('gg').style.display='none';
   google.accounts.id.renderButton(L('gbtn'),{theme:'filled_blue',size:'large',text:'signin_with',locale:'pt-BR',width:320});

@@ -52,17 +52,17 @@ function stepG(gh){
   gh.x+=DIRS[gh.d][0]*sp;gh.y+=DIRS[gh.d][1]*sp;wrap(gh);
 }
 function update(){
-  if(state!=='play')return;
+  if(state!=='play'||HOLD.on)return;
   if(pause>0){pause--;return}
   tick++;stepP();ghosts.forEach(stepG);
   if(fright>0)fright--;
   for(const gh of ghosts){
     if(Math.hypot(gh.x-P.x,gh.y-P.y)<20){
       if(fright>0){SND.play('eatghost');score+=combo;combo*=2;gh.x=(9+Math.random()*3|0)*TS;gh.y=7*TS;gh.wait=90}
-      else{lives--;pause=70;SND.play('death');if(lives<=0){state='over';SND.music(false);setTimeout(()=>SND.play('over'),900);if(score>hi){hi=score;store.set('glm:hi:'+(user?user.name:'Convidado'),hi)}}else resetPos();break}
+      else{lives--;pause=70;SND.play('death');if(lives<=0){state='over';SND.music(false);RANK.submit();setTimeout(()=>SND.play('over'),900);if(score>hi){hi=score;store.set('glm:hi:'+(user?user.name:'Convidado'),hi)}}else resetPos();break}
     }
   }
-  if(coins<=0){SND.play('level');level++;loadMap();resetPos();pause=60}
+  if(coins<=0){SND.play('level');level++;RANK.submit();loadMap();resetPos();pause=60}
   hud();
 }
 

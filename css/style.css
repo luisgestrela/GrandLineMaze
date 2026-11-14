@@ -16,3 +16,17 @@ p{font-size:12px;color:#9fc3ff;margin:6px}
 
 #vol{width:80px;accent-color:#ffd23f;vertical-align:middle}
 
+
+#rankbtn{background:#13427f;color:#fff;border:2px solid #1e90ff;border-radius:6px;cursor:pointer;font-size:14px}
+#rank{position:fixed;inset:0;z-index:8;display:none;align-items:center;justify-content:center;background:rgba(5,11,31,.82)}
+#rank.on{display:flex}
+#rank .box{width:min(380px,92vw)}
+#rankSrc{text-align:center;font-size:11px;color:#9fc3ff}
+#rankNote{min-height:14px;text-align:center;font-size:12px;color:#ffd75e}
+#rankList{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+#rankList li{display:flex;gap:10px;align-items:center;padding:7px 10px;border-radius:6px;background:#071a3a;border:1px solid #1e4f9a}
+#rankList li b{width:34px;text-align:center;color:#ffd75e}
+#rankList li span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#fff}
+#rankList li em{font-style:normal;color:#ffd23f;font-weight:bold}
+#rankList li.me{border-color:#ffd23f;background:#13427f}
+#rankList li.dim{justify-content:center;color:#9fc3ff;border-style:dashed}
